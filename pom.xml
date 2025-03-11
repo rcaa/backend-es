@@ -67,7 +67,11 @@
   			<artifactId>java-jwt</artifactId>
  			<version>4.5.0</version>
 		</dependency>
-
+		<dependency>
+    		<groupId>com.h2database</groupId>
+    		<artifactId>h2</artifactId>
+    		<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -86,5 +90,19 @@
         	</resource>
     	</resources>
 	</build>
+	<profiles>
+    	<profile>
+        	<id>test</id>
+        	<activation>
+            	<property>
+                	<name>env</name>
+                	<value>test</value>
+            	</property>
+        	</activation>
+        	<properties>
+            	<spring.profiles.active>test</spring.profiles.active>
+        	</properties>
+    	</profile>
+	</profiles>
 
 </project>
